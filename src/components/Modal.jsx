@@ -35,7 +35,13 @@ const Modal = ({
         item.country.name.toLowerCase().includes(searchTermLowerCase)
       );
     }
-    return true; // If search term is empty, include all data
+
+    // Filter only even IDs if 'onlyEvenChecked' is true
+    if (onlyEvenChecked) {
+      return item.id % 2 === 0;
+    }
+
+    return true; // If search term is empty and not filtering even IDs, include all data
   });
 
   return (
